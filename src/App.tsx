@@ -10,11 +10,10 @@ export default function App() {
       <div class="flex flex-col w-[60ch] h-screen justify-center gap-5">
         <ProfileCard />
         <TextCard title="About">
-          I am a freelance full-stack developer specializing in backend
-          development with Go. On the frontend, I work with Next.js and Tailwind
-          to create clean, functional interfaces. Outside of coding, I explore
-          3D modeling and enjoy making music, constantly pushing myself to grow
-          creatively and expand my skill set.
+          I'm a self-taught software engineer specializing in Go, PostgreSQL,
+          and SolidJS. I build everything from websites and Quant trading systems to full
+          startup products. I love learning new technologies and am always open
+          to exploring any tech stack.
         </TextCard>
         <p class="text-text text-sm mt-5 mb-3">Side Projects</p>
         <EntryCard
