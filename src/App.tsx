@@ -5,8 +5,9 @@ export default function App() {
   return (
     <>
       {/* <div class="w-full h-12"></div> */}
-      <div class="flex flex-col h-screen items-center justify-center gap-5">
+      <div class="flex flex-col w-[60ch] h-screen items-center justify-center gap-5">
         {/* <p class="text-text text-sm mb-5">Side Projects</p> */}
+
         <EntryCard
           description="Cli tool to provision and deploy to remote servers using a simpel config file. Supports rolling releases and rollbacks"
           title="Eximius"

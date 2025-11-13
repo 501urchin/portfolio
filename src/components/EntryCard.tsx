@@ -23,7 +23,7 @@ export default function EntryCard(p: Props) {
         {p.date}
       </h1>
 
-      <div class="flex flex-col w-[43ch] gap-1">
+      <div class="flex flex-col w-[53ch] gap-1">
         <Show when={hasIcon()}>
           <div class="flex select-none items-center rounded-sm overflow-hidden justify-center size-10">
             <img src={p.iconUrl} class="h-full w-full"></img>
@@ -34,6 +34,7 @@ export default function EntryCard(p: Props) {
             href={p.projectUrl}
             target="_blank"
             rel="noopener noreferrer"
+            title={p.title}
             class="text-text select-none flex flex-row items-center gap-1 hover:underline duration-300 cursor-pointer ease-in-out"
           >
             {p.title}
