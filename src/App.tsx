@@ -4,8 +4,23 @@ import EntryCard from "./components/EntryCard";
 export default function App() {
   return (
     <>
-      <div class="flex flex-col gap-5">
-        <p class="text-text text-sm mb-5">Side Projects</p>
+      {/* <div class="w-full h-12"></div> */}
+      <div class="flex flex-col h-screen items-center justify-center gap-5">
+        {/* <p class="text-text text-sm mb-5">Side Projects</p> */}
+        <EntryCard
+          description="Cli tool to provision and deploy to remote servers using a simpel config file. Supports rolling releases and rollbacks"
+          title="Eximius"
+          tags={["C++", "Postgres", "Ollama", "Weviate", "Svelte"]}
+          date="Ongoing"
+          projectUrl="https://github.com/501urchin/oxide"
+        />
+        <EntryCard
+          description="Cli tool to provision and deploy to remote servers using a simpel config file. Supports rolling releases and rollbacks"
+          title="Oxide"
+          tags={["C++", "Docker"]}
+          date="Ongoing"
+          projectUrl="https://github.com/501urchin/oxide"
+        />
         <EntryCard
           description="Agentic marketing platform. From competitor analysis to publishing winning ads, Revala's agent does it all."
           title="Revala"

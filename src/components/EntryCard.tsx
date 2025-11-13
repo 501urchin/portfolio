@@ -4,7 +4,7 @@ interface Props {
   date: string;
   title: string;
   description: string;
-  
+
   projectUrl?: string;
   tags?: string[];
   iconUrl?: string;
@@ -36,18 +36,20 @@ export default function EntryCard(p: Props) {
 
   return (
     <div class="flex flex-row gap-2 text-sm antialiased">
-      <h1 class="text-text-muted-extra w-[12ch] text-start">{p.date}</h1>
+      <h1 class="text-text-muted-extra w-[12ch] select-none text-start">
+        {p.date}
+      </h1>
 
       <div class="flex flex-col w-[43ch] gap-1">
         <Show when={hasIcon()}>
-          <div class="flex items-center justify-center size-10"></div>
+          <div class="flex select-none items-center justify-center size-10"></div>
         </Show>
         <Show when={hasLink()} fallback={<h2 class="text-text">{p.title}</h2>}>
           <a
             href={p.projectUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-text flex flex-row items-center gap-1 hover:underline duration-300 cursor-pointer ease-in-out"
+            class="text-text select-none flex flex-row items-center gap-1 hover:underline duration-300 cursor-pointer ease-in-out"
           >
             {p.title}
             <ArrowIcon />
@@ -60,9 +62,9 @@ export default function EntryCard(p: Props) {
           <For each={p.tags}>
             {(t, i) => (
               <>
-                <div class="text-text-muted-extra">{t}</div>
+                <div class="text-text-muted-extra ">{t}</div>
                 {i() + 1 === p.tags?.length ? null : (
-                  <div class="text-text-muted-extra">•</div>
+                  <div class="text-text-muted-extra select-none">•</div>
                 )}
               </>
             )}
