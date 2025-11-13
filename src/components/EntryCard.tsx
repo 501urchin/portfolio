@@ -22,7 +22,6 @@ function ArrowIcon() {
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="lucide lucide-move-up-right"
     >
       <path d="M13 5H19V11" />
       <path d="M19 5L5 19" />

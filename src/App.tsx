@@ -10,9 +10,9 @@ export default function App() {
         <EntryCard
           description="Cli tool to provision and deploy to remote servers using a simpel config file. Supports rolling releases and rollbacks"
           title="Eximius"
-          tags={["C++", "Postgres", "Ollama", "Weviate", "Svelte"]}
+          tags={["C++", "Postgres", "Ollama", "Svelte"]}
           date="Ongoing"
-          projectUrl="https://github.com/501urchin/oxide"
+          projectUrl="https://github.com/501urchin/eximius"
         />
         <EntryCard
           description="Cli tool to provision and deploy to remote servers using a simpel config file. Supports rolling releases and rollbacks"
