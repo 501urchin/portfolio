@@ -1,13 +1,22 @@
 import type { Component } from "solid-js";
 import EntryCard from "./components/EntryCard";
+import ProfileCard from "./components/ProfileCard";
+import TextCard from "./components/TextCard";
 
 export default function App() {
   return (
     <>
       {/* <div class="w-full h-12"></div> */}
-      <div class="flex flex-col w-[60ch] h-screen items-center justify-center gap-5">
-        {/* <p class="text-text text-sm mb-5">Side Projects</p> */}
-
+      <div class="flex flex-col w-[60ch] h-screen justify-center gap-5">
+        <ProfileCard />
+        <TextCard title="About">
+          I am a freelance full-stack developer specializing in backend
+          development with Go. On the frontend, I work with Next.js and Tailwind
+          to create clean, functional interfaces. Outside of coding, I explore
+          3D modeling and enjoy making music, constantly pushing myself to grow
+          creatively and expand my skill set.
+        </TextCard>
+        <p class="text-text text-sm mt-5 mb-3">Side Projects</p>
         <EntryCard
           description="Cli tool to provision and deploy to remote servers using a simpel config file. Supports rolling releases and rollbacks"
           title="Eximius"
