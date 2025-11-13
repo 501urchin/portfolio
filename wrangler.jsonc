@@ -1,7 +1,6 @@
 {
   "name": "portfolio",
   "compatibility_date": "2025-11-13",
-  "main": "src/worker.ts",
   "assets": {
     "directory": "./dist"
   }
