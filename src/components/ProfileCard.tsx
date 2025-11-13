@@ -1,7 +1,7 @@
 export default function ProfileCard() {
   return (
     <>
-      <div class="flex flex-row w-[60ch] gap-2 ">
+      <div class="flex flex-row full gap-2 ">
         <div class="size-16 select-none bg-white rounded-lg overflow-hidden">
           <img src="/pig.png" class="h-full w-full"></img>
         </div>
