@@ -35,13 +35,15 @@ export default function EntryCard(p: Props) {
 
   return (
     <div class="flex flex-row gap-2 text-sm antialiased">
-      <h1 class="text-text-muted-extra w-[12ch] select-none text-start">
+      <h1 class="text-text-muted-extra  w-[12ch] select-none text-start">
         {p.date}
       </h1>
 
       <div class="flex flex-col w-[43ch] gap-1">
         <Show when={hasIcon()}>
-          <div class="flex select-none items-center justify-center size-10"></div>
+          <div class="flex select-none items-center rounded-sm overflow-hidden justify-center size-10">
+            <img src={p.iconUrl} class="h-full w-full"></img>
+          </div>
         </Show>
         <Show when={hasLink()} fallback={<h2 class="text-text">{p.title}</h2>}>
           <a

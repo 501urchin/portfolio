@@ -13,6 +13,7 @@ export default function App() {
           tags={["C++", "Postgres", "Ollama", "Svelte"]}
           date="Ongoing"
           projectUrl="https://github.com/501urchin/eximius"
+          iconUrl="/helldiver.png"
         />
         <EntryCard
           description="Cli tool to provision and deploy to remote servers using a simpel config file. Supports rolling releases and rollbacks"
