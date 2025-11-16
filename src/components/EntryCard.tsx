@@ -2,9 +2,9 @@ import { For, Show } from "solid-js";
 import ArrowIcon from "./ArrowIson";
 
 interface Props {
-  date: string;
-  title: string;
-  description: string;
+  slug: string;
+  title?: string;
+  description?: string;
 
   projectUrl?: string;
   tags?: string[];
@@ -14,11 +14,13 @@ interface Props {
 export default function EntryCard(p: Props) {
   const hasLink = () => p.projectUrl && p.projectUrl.trim() !== "";
   const hasIcon = () => p.iconUrl && p.iconUrl.trim() !== "";
+  const hasDescription = () => p.description && p.description.trim() !== "";
+  const hasDTags = () => p.tags && p.tags.length !== 0;
 
   return (
     <div class="flex flex-row gap-2 text-sm antialiased">
       <h1 class="text-text-muted-extra hidden sm:flex w-[12ch]  select-none text-start">
-        {p.date}
+        {p.slug}
       </h1>
 
       <div class="flex flex-col w-full sm:w-[53ch] gap-1">
@@ -44,25 +46,29 @@ export default function EntryCard(p: Props) {
               •
             </div>
             <h1 class="text-text-muted-extra flex sm:hidden select-none text-start">
-              {p.date}
+              {p.slug}
             </h1>
           </div>
         </Show>
 
-        <p class="text-text-muted">{p.description}</p>
+        <Show when={hasDescription()}>
+          <p class="text-text-muted">{p.description}</p>
+        </Show>
 
-        <div class="overflow-clip flex flex-row gap-1">
-          <For each={p.tags}>
-            {(t, i) => (
-              <>
-                <div class="text-text-muted-extra ">{t}</div>
-                {i() + 1 === p.tags?.length ? null : (
-                  <div class="text-text-muted-extra select-none">•</div>
-                )}
-              </>
-            )}
-          </For>
-        </div>
+        <Show when={hasDTags()}>
+          <div class="overflow-clip flex flex-row gap-1">
+            <For each={p.tags}>
+              {(t, i) => (
+                <>
+                  <div class="text-text-muted-extra ">{t}</div>
+                  {i() + 1 === p.tags?.length ? null : (
+                    <div class="text-text-muted-extra select-none">•</div>
+                  )}
+                </>
+              )}
+            </For>
+          </div>
+        </Show>
       </div>
     </div>
   );

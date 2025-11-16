@@ -9,7 +9,7 @@ const myWorkCards = [
       "Agentic marketing platform. From competitor analysis to publishing winning ads, Revala's agent does it all.",
     title: "Revala",
     tags: ["Go", "Postgres", "SolidJS", "Weaviate"],
-    date: "2025",
+    slug: "2025",
     projectUrl: "https://www.revala.io",
   },
   {
@@ -17,7 +17,7 @@ const myWorkCards = [
       "The fastest steganography library in the Go ecosystem. Features variable-bit encoding, audio steganography, Reed–Solomon error correction, etc.",
     title: "Stegano",
     tags: ["Go", "OSS"],
-    date: "2024",
+    slug: "2024",
     projectUrl: "https://github.com/501urchin/stegano",
   },
   {
@@ -25,7 +25,7 @@ const myWorkCards = [
       "CLI tool to provision and deploy to remote servers using a simple config file. Supports rolling releases and rollbacks.",
     title: "Eximius",
     tags: ["C++", "Postgres", "Ollama", "Svelte"],
-    date: "Ongoing",
+    slug: "Ongoing",
     projectUrl: "https://github.com/501urchin/eximius",
   },
   {
@@ -33,8 +33,21 @@ const myWorkCards = [
       "CLI tool to provision and deploy to remote servers using a simple config file. Supports rolling releases and rollbacks.",
     title: "Oxide",
     tags: ["C++", "Docker"],
-    date: "Ongoing",
+    slug: "Ongoing",
     projectUrl: "https://github.com/501urchin/oxide",
+  },
+];
+
+const ContactCard = [
+  {
+    platform: "Github",
+    handle: "501urchin",
+    url: "https://github.com/501urchin",
+  },
+  {
+    platform: "X",
+    handle: "jayac_sh",
+    url: "https://x.com/jayac_sh",
   },
 ];
 
@@ -53,15 +66,25 @@ export default function App() {
         </TextCard>
 
         <p class="text-text text-sm mt-5 mb-3">My Work</p>
-
         <For each={myWorkCards}>
           {(card) => (
             <EntryCard
               description={card.description}
               title={card.title}
               tags={card.tags}
-              date={card.date}
+              slug={card.slug}
               projectUrl={card.projectUrl}
+            />
+          )}
+        </For>
+
+        <p class="text-text text-sm mt-5 mb-3">Links</p>
+        <For each={ContactCard}>
+          {(card) => (
+            <EntryCard
+              title={card.handle}
+              projectUrl={card.url}
+              slug={card.platform}
             />
           )}
         </For>

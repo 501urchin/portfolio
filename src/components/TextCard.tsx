@@ -11,7 +11,7 @@ export default function TextCard(props: Props) {
   return (
     <div class="w-full flex flex-col gap-1">
       {props.title && <h1 class="text-text text-sm">{props.title}</h1>}
-      <p class="text-text-muted text-sm">{c()}</p>
+      <p class="text-text-muted-extra text-sm">{c()}</p>
     </div>
   );
 }
