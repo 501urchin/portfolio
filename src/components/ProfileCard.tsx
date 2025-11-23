@@ -8,7 +8,7 @@ export default function ProfileCard() {
         <div class="flex flex-col">
           <h1 class="text-text">Jayac</h1>
           <p class="text-text-muted-extra text-sm">Software Engineer</p>
-          <a href="" target="" class="select-none text-text-muted-extra text-sm hover:underline duration-300 ease-in-out cursor-pointer">jay@cosinelabs.io</a>
+          <a href="https://x.com/jayac_sh" target="_blank" class="select-none text-text-muted-extra text-sm hover:underline duration-300 ease-in-out cursor-pointer">@jayac_sh</a>
         </div>
       </div>
     </>

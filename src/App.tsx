@@ -16,15 +16,15 @@ const myWorkCards = [
     description:
       "The fastest steganography library in the Go ecosystem. Features variable-bit encoding, audio steganography, Reed–Solomon error correction, etc.",
     title: "Stegano",
-    tags: ["Go", "OSS"],
+    tags: ["Go"],
     slug: "2024",
     projectUrl: "https://github.com/501urchin/stegano",
   },
   {
     description:
-      "CLI tool to provision and deploy to remote servers using a simple config file. Supports rolling releases and rollbacks.",
+      "Search engine supporting lexical and semantic search indexed on over a million pages. Uses custom built ranking algorithm based on google's pagerank",
     title: "Eximius",
-    tags: ["C++", "Postgres", "Ollama", "Svelte"],
+    tags: ["Rust", "Postgres", "Ollama", "Svelte"],
     slug: "Ongoing",
     projectUrl: "https://github.com/501urchin/eximius",
   },
@@ -41,12 +41,12 @@ const myWorkCards = [
 const ContactCard = [
   {
     platform: "Github",
-    handle: "501urchin",
+    handle: "@501urchin",
     url: "https://github.com/501urchin",
   },
   {
     platform: "X",
-    handle: "jayac_sh",
+    handle: "@jayac_sh",
     url: "https://x.com/jayac_sh",
   },
 ];
@@ -58,7 +58,7 @@ export default function App() {
         <ProfileCard />
 
         <TextCard title="About">
-          I'm a self-taught software engineer with a focus on Go, PostgreSQL,
+          I'm a self taught software engineer with a focus on Go, PostgreSQL,
           and SolidJS. I build everything from web applications and quant
           trading models to complete, production ready systems. I enjoy picking
           up new technologies and am always open to working with different
@@ -78,16 +78,7 @@ export default function App() {
           )}
         </For>
 
-        <p class="text-text text-sm mt-5 mb-3">Links</p>
-        <For each={ContactCard}>
-          {(card) => (
-            <EntryCard
-              title={card.handle}
-              projectUrl={card.url}
-              slug={card.platform}
-            />
-          )}
-        </For>
+
       </div>
     </>
   );
