@@ -2,6 +2,7 @@ import { For } from "solid-js";
 import EntryCard from "./components/EntryCard";
 import ProfileCard from "./components/ProfileCard";
 import TextCard from "./components/TextCard";
+import Navbar from "./components/NavBar";
 
 const myWorkCards = [
   {
@@ -54,6 +55,7 @@ const ContactCard = [
 export default function App() {
   return (
     <>
+      {/* <Navbar /> */}
       <div class="flex flex-col w-full sm:w-[60ch] gap-5">
         <ProfileCard />
 
@@ -77,8 +79,6 @@ export default function App() {
             />
           )}
         </For>
-
-
       </div>
     </>
   );
