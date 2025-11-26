@@ -40,14 +40,17 @@ run: templ build ## Build and run the application
 	./$(BINARY_NAME)
 
 # Cross compilation
-build-linux: templ ## Build for Linux
+build-linux: templ 
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(BINARY_UNIX) -v
 
-build-windows: templ ## Build for Windows
+build-windows: templ
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 $(GOBUILD) -o $(BINARY_NAME).exe -v
 
-build-darwin: templ ## Build for macOS
+build-darwin: templ 
 	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 $(GOBUILD) -o $(BINARY_NAME)_darwin -v
+
+build-wasm: templ 
+	CGO_ENABLED=0 GOOS=js GOARCH=wasm $(GOBUILD) -o $(BINARY_NAME).wasm -v
 
 # Format and lint
 fmt: ## Format Go code
