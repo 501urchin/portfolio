@@ -1,11 +1,15 @@
 package main
 
 import (
+	"compress/gzip"
 	"embed"
 	"fmt"
+	"io"
 	"io/fs"
 	"log"
 	"net/http"
+	"strings"
+	"time"
 
 	_ "embed"
 
@@ -15,6 +19,47 @@ import (
 //go:embed public/**
 var publicFolderEmbed embed.FS
 
+type gzipResponseWriter struct {
+	io.Writer
+	http.ResponseWriter
+}
+
+func (w gzipResponseWriter) Write(b []byte) (int, error) {
+	return w.Writer.Write(b)
+}
+
+func gzipMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if !strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
+			next.ServeHTTP(w, r)
+			return
+		}
+
+		w.Header().Set("Content-Encoding", "gzip")
+		gz := gzip.NewWriter(w)
+		defer gz.Close()
+
+		gzw := gzipResponseWriter{Writer: gz, ResponseWriter: w}
+		next.ServeHTTP(gzw, r)
+	})
+}
+
+func cacheMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Cache-Control", "public, max-age=31536000, immutable")
+		next.ServeHTTP(w, r)
+	})
+}
+
+func securityHeadersMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("X-Content-Type-Options", "nosniff")
+		w.Header().Set("X-Frame-Options", "DENY")
+		w.Header().Set("X-XSS-Protection", "1; mode=block")
+		next.ServeHTTP(w, r)
+	})
+}
+
 func main() {
 	publicFs, err := fs.Sub(publicFolderEmbed, "public")
 	if err != nil {
@@ -22,12 +67,21 @@ func main() {
 	}
 
 	fs := http.FileServer(http.FS(publicFs))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	http.Handle("/static/", securityHeadersMiddleware(gzipMiddleware(cacheMiddleware(http.StripPrefix("/static/", fs)))))
+	http.Handle("/", securityHeadersMiddleware(gzipMiddleware(templ.Handler(App()))))
 
-	http.Handle("/", templ.Handler(App()))
+	server := &http.Server{
+		Addr:              ":42069",
+		Handler:           http.DefaultServeMux,
+		ReadHeaderTimeout: 5 * time.Second,
+		ReadTimeout:       10 * time.Second,
+		WriteTimeout:      10 * time.Second,
+		IdleTimeout:       120 * time.Second,
+		MaxHeaderBytes:    1 << 20, // 1mb
+	}
 
 	fmt.Println("Listening on http://localhost:42069")
-	err = http.ListenAndServe(":42069", nil)
+	err = server.ListenAndServe()
 	if err != nil {
 		log.Fatalln("failed to start portfolio: ", err.Error())
 	}
