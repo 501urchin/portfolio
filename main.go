@@ -26,8 +26,8 @@ func main() {
 
 	http.Handle("/", templ.Handler(App()))
 
-	fmt.Println("Listening on http://localhost:3000")
-	err = http.ListenAndServe(":3000", nil)
+	fmt.Println("Listening on http://localhost:42069")
+	err = http.ListenAndServe(":42069", nil)
 	if err != nil {
 		log.Fatalln("failed to start portfolio: ", err.Error())
 	}
