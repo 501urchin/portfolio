@@ -42,7 +42,7 @@ func ProfileCard() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "\" src=\"/profile.png\" alt=\"profile image\" class=\"h-auto w-auto select-none\"></div><div class=\"flex flex-col\"><h1 class=\"text-text\">Jayac</h1><p class=\"text-text-muted-extra text-sm\">Software Engineer</p><a href=\"https://x.com/jayac_sh\" target=\"_blank\" class=\"select-none text-text-muted-extra text-sm hover:underline duration-300 ease-in-out cursor-pointer\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "\" src=\"/static/profile.png\" alt=\"profile image\" class=\"h-auto w-auto select-none\"></div><div class=\"flex flex-col\"><h1 class=\"text-text\">Jayac</h1><p class=\"text-text-muted-extra text-sm\">Software Engineer</p><a href=\"https://x.com/jayac_sh\" target=\"_blank\" class=\"select-none text-text-muted-extra text-sm hover:underline duration-300 ease-in-out cursor-pointer\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

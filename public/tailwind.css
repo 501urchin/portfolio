@@ -197,6 +197,9 @@
   .h-full {
     height: 100%;
   }
+  .min-h-screen {
+    min-height: 100vh;
+  }
   .w-\[12ch\] {
     width: 12ch;
   }
@@ -236,14 +239,23 @@
   .overflow-hidden {
     overflow: hidden;
   }
+  .overscroll-none {
+    overscroll-behavior: none;
+  }
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
   .rounded-sm {
     border-radius: var(--radius-sm);
   }
+  .bg-bg-dark {
+    background-color: var(--color-bg-dark);
+  }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
   }
   .text-start {
     text-align: start;
@@ -302,6 +314,11 @@
   .sm\:w-\[60ch\] {
     @media (width >= 40rem) {
       width: 60ch;
+    }
+  }
+  .sm\:p-0 {
+    @media (width >= 40rem) {
+      padding: calc(var(--spacing) * 0);
     }
   }
 }

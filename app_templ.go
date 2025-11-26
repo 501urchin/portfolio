@@ -85,7 +85,7 @@ func App() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex flex-col w-full sm:w-[60ch] gap-5\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta name=\"theme-color\" content=\"#000000\"><meta name=\"description\" content=\"Jayac — Full-stack developer portfolio featuring projects, skills, and contact information.\"><meta name=\"keywords\" content=\"Jayac, portfolio, web developer, software engineer, projects, JavaScript, React, frontend, backend\"><meta name=\"author\" content=\"Jayac\"><meta name=\"robots\" content=\"index, follow\"><!-- Preload critical fonts --><link rel=\"preload\" href=\"/static/fonts/Satoshi-Variable.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"anonymous\"><!-- Preload critical image --><link rel=\"preload\" href=\"/static/profile.png\" as=\"image\"><link rel=\"icon\" href=\"\"><title>Jayac portfolio</title><link rel=\"stylesheet\" href=\"/static/index.css\"><link rel=\"stylesheet\" href=\"/static/tailwind.css\"></head><body class=\"ont-sans bg-bg-dark flex p-2 sm:p-0 min-h-screen h-full justify-center overscroll-none flex-col items-center\"><div class=\"flex flex-col w-full sm:w-[60ch] gap-5\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -107,7 +107,7 @@ func App() templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
