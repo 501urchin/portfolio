@@ -60,6 +60,15 @@ func securityHeadersMiddleware(next http.Handler) http.Handler {
 	})
 }
 
+func staticFileHandler(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if strings.HasSuffix(r.URL.Path, ".css") || strings.HasSuffix(r.URL.Path, "tailwindcss") {
+			w.Header().Set("Content-Type", "text/css; charset=utf-8")
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
 func main() {
 	publicFs, err := fs.Sub(publicFolderEmbed, "public")
 	if err != nil {
@@ -67,7 +76,7 @@ func main() {
 	}
 
 	fs := http.FileServer(http.FS(publicFs))
-	http.Handle("/static/", securityHeadersMiddleware(gzipMiddleware(cacheMiddleware(http.StripPrefix("/static/", fs)))))
+	http.Handle("/static/", securityHeadersMiddleware(gzipMiddleware(cacheMiddleware(staticFileHandler(http.StripPrefix("/static/", fs))))))
 	http.Handle("/", securityHeadersMiddleware(gzipMiddleware(templ.Handler(App()))))
 
 	server := &http.Server{
