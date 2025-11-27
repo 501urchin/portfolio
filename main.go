@@ -13,10 +13,11 @@ import (
 
 	_ "embed"
 
+	"github.com/501urchin/portfolio/src"
 	"github.com/a-h/templ"
 )
 
-//go:embed public/**
+//go:embed src/public/**
 var publicFolderEmbed embed.FS
 
 type gzipResponseWriter struct {
@@ -77,7 +78,7 @@ func main() {
 
 	fs := http.FileServer(http.FS(publicFs))
 	http.Handle("/static/", securityHeadersMiddleware(gzipMiddleware(cacheMiddleware(staticFileHandler(http.StripPrefix("/static/", fs))))))
-	http.Handle("/", securityHeadersMiddleware(gzipMiddleware(templ.Handler(App()))))
+	http.Handle("/", securityHeadersMiddleware(gzipMiddleware(templ.Handler(src.Index()))))
 
 	server := &http.Server{
 		Addr:              ":42069",
