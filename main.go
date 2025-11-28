@@ -71,14 +71,14 @@ func staticFileHandler(next http.Handler) http.Handler {
 }
 
 func main() {
-	publicFs, err := fs.Sub(publicFolderEmbed, "public")
+	publicFs, err := fs.Sub(publicFolderEmbed, "src/public")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	fs := http.FileServer(http.FS(publicFs))
 	http.Handle("/static/", securityHeadersMiddleware(gzipMiddleware(cacheMiddleware(staticFileHandler(http.StripPrefix("/static/", fs))))))
-	http.Handle("/", securityHeadersMiddleware(gzipMiddleware(templ.Handler(src.Index()))))
+	http.Handle("/", securityHeadersMiddleware(gzipMiddleware(templ.Handler(src.Root()))))
 
 	server := &http.Server{
 		Addr:              ":42069",
@@ -90,7 +90,7 @@ func main() {
 		MaxHeaderBytes:    1 << 20, // 1mb
 	}
 
-	fmt.Println("Listening on http://localhost:42069")
+	fmt.Println("Portfolio listening on http://localhost:42069")
 	err = server.ListenAndServe()
 	if err != nil {
 		log.Fatalln("failed to start portfolio: ", err.Error())

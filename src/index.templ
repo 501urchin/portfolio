@@ -56,46 +56,13 @@ var myWorkCards = []WorkCard{
 	},
 }
 
-templ Index() {
-	<!DOCTYPE html>
-	<html lang="en">
-		<head>
-			<meta charset="utf-8"/>
-			<meta name="viewport" content="width=device-width, initial-scale=1"/>
-			<meta name="theme-color" content="#000000"/>
-			<meta
-				name="description"
-				content="Jayac — Full-stack developer portfolio featuring projects, skills, and contact information."
-			/>
-			<meta
-				name="keywords"
-				content="Jayac, portfolio, web developer, software engineer, projects, JavaScript, React, frontend, backend"
-			/>
-			<meta name="author" content="Jayac"/>
-			<meta name="robots" content="index, follow"/>
-			<!-- Preload critical fonts -->
-			<link
-				rel="preload"
-				href="/static/fonts/Satoshi-Variable.woff2"
-				as="font"
-				type="font/woff2"
-				crossorigin="anonymous"
-			/>
-			<!-- Preload critical image -->
-			<link rel="preload" href="/static/profile.png" as="image"/>
-			<link rel="icon" href="/static/profile.png"/>
-			<title>Jayac portfolio</title>
-			<link rel="stylesheet" href="/static/tailwind.css"/>
-		</head>
-		<body class="font-sans bg-bg-dark flex p-2 sm:p-0 min-h-screen h-full justify-center overscroll-none flex-col items-center">
-			<div class="flex flex-col w-full sm:w-[60ch] gap-5">
-				@components.ProfileCard()
-				@components.TextCard("About", AboutJob)
-				<p class="text-text text-sm mt-5 mb-3">My Work</p>
-				for _, cards := range myWorkCards {
-					@components.EntryCard(cards.Slug, cards.Opt)
-				}
-			</div>
-		</body>
-	</html>
+templ index() {
+	<div class="flex flex-col w-full sm:w-[60ch] gap-5">
+		@components.ProfileCard()
+		@components.TextCard("About", AboutJob)
+		<p class="text-text text-sm mt-5 mb-3">My Work</p>
+		for _, cards := range myWorkCards {
+			@components.EntryCard(cards.Slug, cards.Opt)
+		}
+	</div>
 }
