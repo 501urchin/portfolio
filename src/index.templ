@@ -28,7 +28,7 @@ var myWorkCards = []WorkCard{
 		Slug: "2024",
 		Opt: components.EntryCardOptions{
 			Title:       "Stegano",
-			Description: "The fastest steganography library in the Go ecosystem. Features variable-bit encoding, audio steganography, Reed–Solomon error correction, etc.",
+			Description: "The fastest steganography library in the Go ecosystem. Features variable bit depth encoding, audio steganography, Reed Solomon error correction, etc.",
 			ProjectUrl:  "https://github.com/501urchin/stegano",
 			Tags:        []string{"Go"},
 			IconUrl:     "",
@@ -56,10 +56,33 @@ var myWorkCards = []WorkCard{
 	},
 }
 
+// var myWorkExperience = []WorkCard{
+// 	{
+// 		Slug: "2025 - Present",
+// 		Opt: components.EntryCardOptions{
+// 			Title:       "Revala",
+// 			Description: "Started and managed this solo run startup, handling full-stack development, deployment, operations, and marketing. Gained experience across all aspects of building and running a tech project.",
+// 			IconUrl:     "",
+// 		},
+// 	},
+// 	{
+// 		Slug: "2025 - Present",
+// 		Opt: components.EntryCardOptions{
+// 			Title:       "Cosine Labs",
+// 			Description: "Launched and ran this client focused development studio. Designed and built websites for various clients, guided onboarding for non-technical users, and provided ongoing support.",
+// 			IconUrl:     "",
+// 		},
+// 	},
+// }
+
 templ index() {
 	<div class="flex flex-col w-full sm:w-[60ch] gap-5">
 		@components.ProfileCard()
 		@components.TextCard("About", AboutJob)
+		// <p class="text-text text-sm mt-5 mb-3">My Experience</p>
+		// for _, cards := range myWorkExperience {
+		// 	@components.EntryCard(cards.Slug, cards.Opt)
+		// }
 		<p class="text-text text-sm mt-5 mb-3">My Work</p>
 		for _, cards := range myWorkCards {
 			@components.EntryCard(cards.Slug, cards.Opt)

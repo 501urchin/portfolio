@@ -36,7 +36,7 @@ var myWorkCards = []WorkCard{
 		Slug: "2024",
 		Opt: components.EntryCardOptions{
 			Title:       "Stegano",
-			Description: "The fastest steganography library in the Go ecosystem. Features variable-bit encoding, audio steganography, Reed–Solomon error correction, etc.",
+			Description: "The fastest steganography library in the Go ecosystem. Features variable bit depth encoding, audio steganography, Reed Solomon error correction, etc.",
 			ProjectUrl:  "https://github.com/501urchin/stegano",
 			Tags:        []string{"Go"},
 			IconUrl:     "",
@@ -64,6 +64,24 @@ var myWorkCards = []WorkCard{
 	},
 }
 
+//	var myWorkExperience = []WorkCard{
+//		{
+//			Slug: "2025 - Present",
+//			Opt: components.EntryCardOptions{
+//				Title:       "Revala",
+//				Description: "Started and managed this solo run startup, handling full-stack development, deployment, operations, and marketing. Gained experience across all aspects of building and running a tech project.",
+//				IconUrl:     "",
+//			},
+//		},
+//		{
+//			Slug: "2025 - Present",
+//			Opt: components.EntryCardOptions{
+//				Title:       "Cosine Labs",
+//				Description: "Launched and ran this client focused development studio. Designed and built websites for various clients, guided onboarding for non-technical users, and provided ongoing support.",
+//				IconUrl:     "",
+//			},
+//		},
+//	}
 func index() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
