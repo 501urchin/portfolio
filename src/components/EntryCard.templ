@@ -25,6 +25,7 @@ templ EntryCard(slug string, opts ...EntryCardOptions) {
 					<img src={ opts[0].IconUrl } class="h-full w-full"/>
 				</div>
 			}
+
 			if hasProjectUrl(opts...) {
 				<div class="flex flex-row gap-2 w-full">
 					<a
@@ -45,9 +46,11 @@ templ EntryCard(slug string, opts ...EntryCardOptions) {
 			} else {
 				<h2 class="text-text">{ opts[0].Title }</h2>
 			}
+
 			if hasDescription(opts...) {
 				<p class="text-text-muted">{ opts[0].Description }</p>
 			}
+			
 			if hasTags(opts...) {
 				<div class="overflow-clip flex flex-row gap-1">
 					for i, tag := range opts[0].Tags {
