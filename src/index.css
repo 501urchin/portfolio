@@ -41,6 +41,7 @@
 * {
   background-color: var(--color-bg-dark);
   font-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
 }
 
 html {

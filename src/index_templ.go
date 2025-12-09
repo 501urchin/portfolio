@@ -23,13 +23,13 @@ stacks.`
 
 var myWorkCards = []WorkCard{
 	{
-		Slug: "2025",
+		Slug: "Ongoing",
 		Opt: components.EntryCardOptions{
 			Title:       "Revala",
 			Description: "Agentic marketing platform. From competitor analysis to publishing winning ads, Revala's agent does it all.",
-			ProjectUrl:  "https://www.revala.io",
-			Tags:        []string{"Go", "Postgresql", "SolidJS"},
-			IconUrl:     "",
+			// ProjectUrl:  "https://www.revala.io",
+			Tags:    []string{"Go", "Postgresql", "SolidJS"},
+			IconUrl: "",
 		},
 	},
 	{
@@ -46,10 +46,10 @@ var myWorkCards = []WorkCard{
 		Slug: "Ongoing",
 		Opt: components.EntryCardOptions{
 			Title:       "Eximius",
-			Description: "Search engine supporting lexical and semantic search indexed on over a million pages. Uses custom built ranking algorithm based on google's pagerank",
-			ProjectUrl:  "https://github.com/501urchin/eximius",
-			Tags:        []string{"Go", "Postgresql", "Templ"},
-			IconUrl:     "",
+			Description: "Search engine supporting lexical and semantic search indexed on over a hundred thousand pages. Uses custom built ranking algorithm based on google's pagerank",
+			// ProjectUrl:  "https://github.com/501urchin/eximius",
+			Tags:    []string{"Zig", "Go", "Postgresql", "Templ"},
+			IconUrl: "",
 		},
 	},
 	{
@@ -57,9 +57,9 @@ var myWorkCards = []WorkCard{
 		Opt: components.EntryCardOptions{
 			Title:       "Oxide",
 			Description: "CLI tool to provision and deploy to remote servers using a simple config file. Supports rolling releases and rollbacks.",
-			ProjectUrl:  "https://github.com/501urchin/oxide",
-			Tags:        []string{"Rust"},
-			IconUrl:     "",
+			// ProjectUrl:  "https://github.com/501urchin/oxide",
+			Tags:    []string{"Zig"},
+			IconUrl: "",
 		},
 	},
 }
@@ -115,7 +115,7 @@ func index() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<p class=\"text-text text-sm mt-5 mb-3\">My Work</p>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<p class=\"text-text text-sm mt-5 mb-3\">Featured Work</p>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
