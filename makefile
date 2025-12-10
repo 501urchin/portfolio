@@ -1,66 +1,38 @@
-# Go parameters
-GOCMD=go
-GOBUILD=$(GOCMD) build -ldflags="-s -w" -trimpath
-GOCLEAN=$(GOCMD) clean
-GOTEST=$(GOCMD) test
-GOGET=$(GOCMD) get
-GOMOD=$(GOCMD) mod
-BINARY_NAME=portfolio
-BINARY_UNIX=$(BINARY_NAME)_unix
+TAILWIND = npx @tailwindcss/cli
+TAILWIND_INPUT = ./src/index.css
+TAILWIND_OUTPUT = ./src/public/tailwind.css
 
-# Templ parameters
-TEMPL=go tool templ
+TEMPL = templ
+GOFLAGS = -ldflags="-s -w" -trimpath
 
-.PHONY: all build clean test coverage deps templ run dev help
+.PHONY: run build deps css gen clean
 
-all: test build ## Run tests and build
+run: css gen
+	@go run .
 
-build: templ ## Build the binary
-	$(GOBUILD) -o $(BINARY_NAME) -v
+build: css gen
+	@go build $(GOFLAGS) .
 
-clean: ## Remove build artifacts
-	$(GOCLEAN)
-	rm -f $(BINARY_NAME)
-	rm -f $(BINARY_UNIX)
-	rm -f *_templ.go
-	rm -f components/*_templ.go
+css:
+	@$(TAILWIND) -i $(TAILWIND_INPUT) -o $(TAILWIND_OUTPUT)
 
-test: ## Run tests
-	$(GOTEST) -v ./...
+gen:
+	@$(TEMPL) generate
 
+deps:
+	@echo "Installing templ..."
+	@go install github.com/a-h/templ/cmd/templ@latest
+	@echo "Installing tailwind..."
+	@npm install tailwindcss @tailwindcss/cli
 
-deps: ## Download dependencies
-	$(GOMOD) download
-	$(GOMOD) tidy
+clean:
+	@rm -rf node_modules
+	@rm -f
 
-templ: ## Generate templ files
-	$(TEMPL) generate
-
-run: templ build ## Build and run the application
-	./$(BINARY_NAME)
-
-# Cross compilation
-build-linux: templ 
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(BINARY_UNIX) -v
-
-build-windows: templ
-	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 $(GOBUILD) -o $(BINARY_NAME).exe -v
-
-build-darwin: templ 
-	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 $(GOBUILD) -o $(BINARY_NAME)_darwin -v
-
-build-wasm: templ 
-	CGO_ENABLED=0 GOOS=js GOARCH=wasm $(GOBUILD) -o $(BINARY_NAME).wasm -v
-
-# Format and lint
-fmt: ## Format Go code
-	$(GOCMD) fmt ./...
-	$(TEMPL) fmt .
-
-vet: ## Run go vet
-	$(GOCMD) vet ./...
-
-lint: fmt vet ## Run linters
-
-help: ## Display this help screen
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+escape: 
+	@go build -gcflags "-m" . > escape.txt 2>&1
+	@grep -i 'escapes to heap' escape.txt > escapes.txt
+	@rm -f escape.txt portfolio
+asm: 
+	@go build -gcflags "-S" . > main.asm 2>&1
+	@rm -f portfolio

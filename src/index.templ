@@ -15,12 +15,12 @@ stacks.`
 
 var myWorkCards = []WorkCard{
 	{
-		Slug: "Ongoing",
+		Slug: "2025",
 		Opt: components.EntryCardOptions{
-			Title:       "Revala",
-			Description: "Agentic marketing platform. From competitor analysis to publishing winning ads, Revala's agent does it all.",
-			// ProjectUrl:  "https://www.revala.io",
-			Tags:        []string{"Go", "Postgresql", "SolidJS"},
+			Title:       "Gauth",
+			Description: "A configurable authentication library for Go. Handles auth, rate-limiting, and common workflows with minimal setup.",
+			ProjectUrl:  "https://github.com/501urchin/gauth",
+			Tags:        []string{"Go"},
 			IconUrl:     "",
 		},
 	},
@@ -34,14 +34,24 @@ var myWorkCards = []WorkCard{
 			IconUrl:     "",
 		},
 	},
+	// {
+	// 	Slug: "Ongoing",
+	// 	Opt: components.EntryCardOptions{
+	// 		Title:       "Revala",
+	// 		Description: "Agentic marketing platform. From competitor analysis to publishing winning ads, Revala's agent does it all.",
+	// 		// ProjectUrl:  "https://www.revala.io",
+	// 		Tags:        []string{"Go", "Postgresql", "SolidJS"},
+	// 		IconUrl:     "",
+	// 	},
+	// },
 	{
 		Slug: "Ongoing",
 		Opt: components.EntryCardOptions{
 			Title:       "Eximius",
 			Description: "Search engine supporting lexical and semantic search indexed on over a hundred thousand pages. Uses custom built ranking algorithm based on google's pagerank",
 			// ProjectUrl:  "https://github.com/501urchin/eximius",
-			Tags:        []string{"Zig", "Go", "Postgresql", "Templ"},
-			IconUrl:     "",
+			Tags:    []string{"C++", "Go", "Postgresql", "Templ"},
+			IconUrl: "",
 		},
 	},
 	{
@@ -50,38 +60,38 @@ var myWorkCards = []WorkCard{
 			Title:       "Oxide",
 			Description: "CLI tool to provision and deploy to remote servers using a simple config file. Supports rolling releases and rollbacks.",
 			// ProjectUrl:  "https://github.com/501urchin/oxide",
-			Tags:        []string{"Zig"},
-			IconUrl:     "",
+			Tags:    []string{"C++"},
+			IconUrl: "",
 		},
 	},
 }
 
-// var myWorkExperience = []WorkCard{
-// 	{
-// 		Slug: "2025 - Present",
-// 		Opt: components.EntryCardOptions{
-// 			Title:       "Revala",
-// 			Description: "Started and managed this solo run startup, handling full-stack development, deployment, operations, and marketing. Gained experience across all aspects of building and running a tech project.",
-// 			IconUrl:     "",
-// 		},
-// 	},
-// 	{
-// 		Slug: "2025 - Present",
-// 		Opt: components.EntryCardOptions{
-// 			Title:       "Cosine Labs",
-// 			Description: "Launched and ran this client focused development studio. Designed and built websites for various clients, guided onboarding for non-technical users, and provided ongoing support.",
-// 			IconUrl:     "",
-// 		},
-// 	},
-// }
+var myWorkExperience = []WorkCard{
+	{
+		Slug: "2025 - Present",
+		Opt: components.EntryCardOptions{
+			Title:       "Revala",
+			Description: "Started and managed this solo run startup, handling full-stack development, deployment, operations, and marketing. Gained experience across all aspects of building and running a tech project.",
+			IconUrl:     "",
+		},
+	},
+	{
+		Slug: "2025 - Present",
+		Opt: components.EntryCardOptions{
+			Title:       "Cosine Labs",
+			Description: "Launched and ran this client focused development studio. Designed and built websites for various clients, guided onboarding for non-technical users, and provided ongoing support.",
+			IconUrl:     "",
+		},
+	},
+}
 templ index() {
 	<div class="flex flex-col w-full sm:w-[60ch] gap-5">
 		@components.ProfileCard()
 		@components.TextCard("About", AboutJob)
-		// <p class="text-text text-sm mt-5 mb-3">My Experience</p>
-		// for _, cards := range myWorkExperience {
-		// 	@components.EntryCard(cards.Slug, cards.Opt)
-		// }
+		<p class="text-text text-sm mt-5 mb-3">My Experience</p>
+		for _, cards := range myWorkExperience {
+			@components.EntryCard(cards.Slug, cards.Opt)
+		}
 		<p class="text-text text-sm mt-5 mb-3">Featured Work</p>
 		for _, cards := range myWorkCards {
 			@components.EntryCard(cards.Slug, cards.Opt)
