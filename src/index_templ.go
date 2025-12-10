@@ -58,7 +58,7 @@ var myWorkCards = []WorkCard{
 			Title:       "Eximius",
 			Description: "Search engine supporting lexical and semantic search indexed on over a hundred thousand pages. Uses custom built ranking algorithm based on google's pagerank",
 			// ProjectUrl:  "https://github.com/501urchin/eximius",
-			Tags:    []string{"C++", "Go", "Postgresql", "Templ"},
+			Tags:    []string{"Go", "C++", "Postgresql", "Templ"},
 			IconUrl: "",
 		},
 	},
@@ -74,25 +74,24 @@ var myWorkCards = []WorkCard{
 	},
 }
 
-var myWorkExperience = []WorkCard{
-	{
-		Slug: "2025 - Present",
-		Opt: components.EntryCardOptions{
-			Title:       "Revala",
-			Description: "Started and managed this solo run startup, handling full-stack development, deployment, operations, and marketing. Gained experience across all aspects of building and running a tech project.",
-			IconUrl:     "",
-		},
-	},
-	{
-		Slug: "2025 - Present",
-		Opt: components.EntryCardOptions{
-			Title:       "Cosine Labs",
-			Description: "Launched and ran this client focused development studio. Designed and built websites for various clients, guided onboarding for non-technical users, and provided ongoing support.",
-			IconUrl:     "",
-		},
-	},
-}
-
+//	var myWorkExperience = []WorkCard{
+//		{
+//			Slug: "2025 - Present",
+//			Opt: components.EntryCardOptions{
+//				Title:       "Revala",
+//				Description: "Started and managed this solo run startup, handling full-stack development, deployment, operations, and marketing. Gained experience across all aspects of building and running a tech project.",
+//				IconUrl:     "",
+//			},
+//		},
+//		{
+//			Slug: "2025 - Present",
+//			Opt: components.EntryCardOptions{
+//				Title:       "Cosine Labs",
+//				Description: "Launched and ran this client focused development studio. Designed and built websites for various clients, guided onboarding for non-technical users, and provided ongoing support.",
+//				IconUrl:     "",
+//			},
+//		},
+//	}
 func index() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -126,17 +125,7 @@ func index() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<p class=\"text-text text-sm mt-5 mb-3\">My Experience</p>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		for _, cards := range myWorkExperience {
-			templ_7745c5c3_Err = components.EntryCard(cards.Slug, cards.Opt).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<p class=\"text-text text-sm mt-5 mb-3\">Featured Work</p>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<p class=\"text-text text-sm mt-5 mb-3\">Featured Work</p>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -146,7 +135,7 @@ func index() templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
