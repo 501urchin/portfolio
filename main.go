@@ -81,7 +81,7 @@ func main() {
 	http.Handle("/", securityHeadersMiddleware(gzipMiddleware(templ.Handler(src.Root()))))
 
 	server := &http.Server{
-		Addr:              ":42069",
+		Addr:              ":42068",
 		Handler:           http.DefaultServeMux,
 		ReadHeaderTimeout: 5 * time.Second,
 		ReadTimeout:       10 * time.Second,

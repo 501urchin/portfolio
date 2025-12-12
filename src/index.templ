@@ -96,5 +96,7 @@ templ index() {
 		for _, cards := range myWorkCards {
 			@components.EntryCard(cards.Slug, cards.Opt)
 		}
+		<p class="text-text text-sm mt-5 mb-3">Favorite film</p>
+		@components.MoviePlayer()
 	</div>
 }

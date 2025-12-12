@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.18 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -14,6 +14,7 @@
     --radius-sm: 0.25rem;
     --radius-lg: 0.5rem;
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --aspect-video: 16 / 9;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --color-bg-dark: #080808;
@@ -201,6 +202,9 @@
   .hidden {
     display: none;
   }
+  .aspect-video {
+    aspect-ratio: var(--aspect-video);
+  }
   .size-10 {
     width: calc(var(--spacing) * 10);
     height: calc(var(--spacing) * 10);
@@ -268,6 +272,9 @@
   }
   .bg-bg-dark {
     background-color: var(--color-bg-dark);
+  }
+  .bg-text-muted-extra {
+    background-color: var(--color-text-muted-extra);
   }
   .bg-white {
     background-color: var(--color-white);
